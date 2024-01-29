@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace _21___Anagrafica_in_classe
 {
-    
+
     public partial class FormModifica : Form
     {
         public string id_utente;
@@ -41,7 +41,7 @@ namespace _21___Anagrafica_in_classe
                 dr.Read();
                 textBoxNome.Text = dr.GetString("Nome");
                 textBoxCognome.Text = dr.GetString("Cognome");
-                textBoxDataNascita.Text = dr.GetDateTime("DataNascita").ToString("dd/MM/yyyy");
+                dateTimePicker1.Value = dr.GetDateTime("DataNascita");                
                 dr.Close();
 
                 connessione.Close();
@@ -69,16 +69,11 @@ namespace _21___Anagrafica_in_classe
             {
                 connessione.Open();
 
-                /*
-                    UPDATE table_name
-                    SET column1 = value1, column2 = value2, ...
-                    WHERE condition;
-                 */
                 string query = $"UPDATE utenti " +
                     $"SET " +
                     $"Nome = '{textBoxNome.Text}', " +
-                    $"Cognome = '{textBoxCognome.Text}' " +
-                    //$"DataNascita = '{textBoxDataNascita.Text.ToString("yyyy/MM/dd")}' " +
+                    $"Cognome = '{textBoxCognome.Text}', " +
+                    $"DataNascita = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}' " +
                     $"WHERE id = '{id_utente}'";
                 MySqlCommand cmd = new MySqlCommand(query, connessione);
                 cmd.ExecuteNonQuery();
@@ -89,7 +84,7 @@ namespace _21___Anagrafica_in_classe
             {
                 MessageBox.Show("Impossibile stabilire una connessione al DB");
             }
-            
+
             this.Close();
         }
     }

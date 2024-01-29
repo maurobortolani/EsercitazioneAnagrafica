@@ -32,10 +32,10 @@
             textBoxNome = new TextBox();
             textBoxCognome = new TextBox();
             labelCognome = new Label();
-            textBoxDataNascita = new TextBox();
             labelDataNascita = new Label();
             buttonSave = new Button();
             buttonCancel = new Button();
+            dateTimePicker1 = new DateTimePicker();
             SuspendLayout();
             // 
             // labelNome
@@ -70,13 +70,6 @@
             labelCognome.TabIndex = 2;
             labelCognome.Text = "Cognome";
             // 
-            // textBoxDataNascita
-            // 
-            textBoxDataNascita.Location = new Point(130, 75);
-            textBoxDataNascita.Name = "textBoxDataNascita";
-            textBoxDataNascita.Size = new Size(242, 23);
-            textBoxDataNascita.TabIndex = 5;
-            // 
             // labelDataNascita
             // 
             labelDataNascita.AutoSize = true;
@@ -108,14 +101,21 @@
             buttonCancel.UseVisualStyleBackColor = true;
             buttonCancel.Click += buttonCancel_Click;
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(130, 75);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(242, 23);
+            dateTimePicker1.TabIndex = 8;
+            // 
             // FormModifica
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(384, 161);
+            Controls.Add(dateTimePicker1);
             Controls.Add(buttonCancel);
             Controls.Add(buttonSave);
-            Controls.Add(textBoxDataNascita);
             Controls.Add(labelDataNascita);
             Controls.Add(textBoxCognome);
             Controls.Add(labelCognome);
@@ -135,9 +135,9 @@
         private TextBox textBoxNome;
         private TextBox textBoxCognome;
         private Label labelCognome;
-        private TextBox textBoxDataNascita;
         private Label labelDataNascita;
         private Button buttonSave;
         private Button buttonCancel;
+        private DateTimePicker dateTimePicker1;
     }
 }
