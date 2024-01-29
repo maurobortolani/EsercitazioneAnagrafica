@@ -86,6 +86,7 @@ namespace _21___Anagrafica_in_classe
             }
 
             this.Close();
+
         }
     }
 }
