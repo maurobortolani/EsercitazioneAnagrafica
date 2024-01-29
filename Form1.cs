@@ -11,9 +11,7 @@ namespace _21___Anagrafica_in_classe
         public Form1()
         {
             InitializeComponent();
-
-            //TestConnessione();
-            PopolaTabella("%");
+            PopolaTabella("");
         }
 
         public void PopolaTabella(string q)
@@ -39,9 +37,9 @@ namespace _21___Anagrafica_in_classe
 
                 connessione.Close();
             }
-            catch
+            catch (Exception ex) 
             {
-                MessageBox.Show("Impossibile stabilire una connessione al DB");
+                MessageBox.Show(ex.Message);
             }
             dataGridView1.AutoResizeColumns();
         }
@@ -69,7 +67,7 @@ namespace _21___Anagrafica_in_classe
             formModifica.ShowDialog();
 
             // aggiorno la tabella, una volta chiusa la form di modifica
-            PopolaTabella("%");
+            PopolaTabella("");
 
         }
 
