@@ -11,18 +11,19 @@ namespace _21___Anagrafica_in_classe
         public Form1()
         {
             InitializeComponent();
+
             //TestConnessione();
-            PopolaTabella();
+            PopolaTabella("%");
         }
 
-        public void PopolaTabella()
+        public void PopolaTabella(string q)
         {
             dataGridView1.Rows.Clear();
             MySqlConnection connessione = new MySqlConnection(ConnectionString);
             try
             {
                 connessione.Open();
-                string query = "SELECT * FROM utenti";
+                string query = $"SELECT * FROM utenti WHERE Nome like '%{q}%' OR Cognome like '%{q}%'";
                 MySqlCommand cmd = new MySqlCommand(query, connessione);
                 MySqlDataReader dr = cmd.ExecuteReader();
 
@@ -42,6 +43,7 @@ namespace _21___Anagrafica_in_classe
             {
                 MessageBox.Show("Impossibile stabilire una connessione al DB");
             }
+            dataGridView1.AutoResizeColumns();
         }
 
         public void TestConnessione()
@@ -67,8 +69,13 @@ namespace _21___Anagrafica_in_classe
             formModifica.ShowDialog();
 
             // aggiorno la tabella, una volta chiusa la form di modifica
-            PopolaTabella();
+            PopolaTabella("%");
 
+        }
+
+        private void textBoxCerca_TextChanged(object sender, EventArgs e)
+        {
+            PopolaTabella(textBoxCerca.Text);
         }
     }
 }

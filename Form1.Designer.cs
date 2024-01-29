@@ -33,17 +33,24 @@
             Nome = new DataGridViewTextBoxColumn();
             Cognome = new DataGridViewTextBoxColumn();
             DataNascita = new DataGridViewTextBoxColumn();
+            textBoxCerca = new TextBox();
+            labelCerca = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, Nome, Cognome, DataNascita });
-            dataGridView1.Location = new Point(12, 143);
+            dataGridView1.Location = new Point(12, 30);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(949, 416);
+            dataGridView1.Size = new Size(695, 529);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
@@ -59,7 +66,6 @@
             Nome.HeaderText = "Nome";
             Nome.Name = "Nome";
             Nome.ReadOnly = true;
-            Nome.Width = 200;
             // 
             // Cognome
             // 
@@ -67,7 +73,6 @@
             Cognome.HeaderText = "Cognome";
             Cognome.Name = "Cognome";
             Cognome.ReadOnly = true;
-            Cognome.Width = 200;
             // 
             // DataNascita
             // 
@@ -75,23 +80,44 @@
             DataNascita.HeaderText = "DataNascita";
             DataNascita.Name = "DataNascita";
             DataNascita.ReadOnly = true;
-            DataNascita.Width = 300;
+            // 
+            // textBoxCerca
+            // 
+            textBoxCerca.Location = new Point(55, 1);
+            textBoxCerca.Name = "textBoxCerca";
+            textBoxCerca.Size = new Size(244, 23);
+            textBoxCerca.TabIndex = 1;
+            textBoxCerca.TextChanged += textBoxCerca_TextChanged;
+            // 
+            // labelCerca
+            // 
+            labelCerca.AutoSize = true;
+            labelCerca.Location = new Point(12, 9);
+            labelCerca.Name = "labelCerca";
+            labelCerca.Size = new Size(37, 15);
+            labelCerca.TabIndex = 2;
+            labelCerca.Text = "Cerca";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1207, 571);
+            ClientSize = new Size(722, 571);
+            Controls.Add(labelCerca);
+            Controls.Add(textBoxCerca);
             Controls.Add(dataGridView1);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridView1;
+        private TextBox textBoxCerca;
+        private Label labelCerca;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Nome;
         private DataGridViewTextBoxColumn Cognome;
