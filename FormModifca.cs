@@ -5,9 +5,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace _21___Anagrafica_in_classe
 {
@@ -41,14 +43,25 @@ namespace _21___Anagrafica_in_classe
                 dr.Read();
                 textBoxNome.Text = dr.GetString("Nome");
                 textBoxCognome.Text = dr.GetString("Cognome");
-                dateTimePicker1.Value = dr.GetDateTime("DataNascita");                
+                dateTimePicker1.Value = dr.GetDateTime("DataNascita");
+                string path = $"../../../immagini/noimage.png";
+                if (File.Exists($"../../../immagini/{dr.GetString("Immagine")}"))
+                {
+                    path = $"../../../immagini/{dr.GetString("Immagine")}";
+                }
+                else
+                {
+                    if (File.Exists($"../../../immagini/{dr.GetString("Id")}.jpg"))
+                        path = $"../../../immagini/{dr.GetString("Id")}.jpg";
+                }
+                pictureBoxImmagine.Image = new Bitmap(path);
                 dr.Close();
 
                 connessione.Close();
             }
-            catch
+            catch (Exception ex) 
             {
-                MessageBox.Show("Impossibile stabilire una connessione al DB");
+                MessageBox.Show(ex.Message);
             }
         }
 
