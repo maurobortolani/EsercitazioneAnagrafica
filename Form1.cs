@@ -12,11 +12,12 @@ namespace _21___Anagrafica_in_classe
         {
             InitializeComponent();
             //TestConnessione();
-            PololaTabella();
+            PopolaTabella();
         }
 
-        public void PololaTabella()
+        public void PopolaTabella()
         {
+            dataGridView1.Rows.Clear();
             MySqlConnection connessione = new MySqlConnection(ConnectionString);
             try
             {
@@ -64,6 +65,9 @@ namespace _21___Anagrafica_in_classe
             FormModifica formModifica = new FormModifica(id);
 
             formModifica.ShowDialog();
+
+            // aggiorno la tabella, una volta chiusa la form di modifica
+            PopolaTabella();
 
         }
     }
